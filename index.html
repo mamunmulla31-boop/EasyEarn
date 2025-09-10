@@ -31,18 +31,53 @@
     button:hover {
       background-color: #005f99;
     }
+    #taskCounter {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #333;
+    }
   </style>
 </head>
 <body>
   <h1>Welcome to Mini App</h1>
   <button id="showAdBtn">Show Ad</button>
+  <p id="taskCounter">Tasks Completed: 0</p>
 
   <script>
+    // Initialize storage
+    function resetTasks() {
+      localStorage.setItem("taskCount", "0");
+      localStorage.setItem("lastReset", Date.now().toString());
+      updateUI();
+    }
+
+    function checkReset() {
+      const lastReset = parseInt(localStorage.getItem("lastReset")) || 0;
+      const now = Date.now();
+      if (now - lastReset >= 24 * 60 * 60 * 1000) {
+        resetTasks();
+      }
+    }
+
+    function updateUI() {
+      const taskCount = localStorage.getItem("taskCount") || "0";
+      document.getElementById("taskCounter").innerText =
+        "Tasks Completed: " + taskCount;
+    }
+
+    // Run at start
+    checkReset();
+    updateUI();
+
     document.getElementById("showAdBtn").addEventListener("click", () => {
       if (typeof window.showGiga === "function") {
         window.showGiga()
           .then(() => {
             console.log("✅ Ad closed successfully.");
+            let taskCount = parseInt(localStorage.getItem("taskCount") || "0");
+            taskCount++;
+            localStorage.setItem("taskCount", taskCount.toString());
+            updateUI();
           })
           .catch((err) => {
             console.error("❌ Ad failed:", err);
