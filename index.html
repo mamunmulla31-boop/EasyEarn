@@ -4,14 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Telegram Mini App - Gigapub Ad</title>
+
   <!-- Gigapub Ad Script -->
-  <script src="https://ad.gigapub.tech/script?id=2128"></script>
+  <script src="https://ad.gigapub.tech/script?id=2128" async defer 
+          onload="adReady()" onerror="adError()"></script>
+
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 50px;
       background-color: #f4f4f4;
+    }
+    h1 {
+      margin-bottom: 30px;
     }
     button {
       padding: 15px 30px;
@@ -33,14 +39,22 @@
   <button id="startButton">Start</button>
 
   <script>
-    const startButton = document.getElementById('startButton');
+    let adLoaded = false;
 
-    startButton.addEventListener('click', () => {
-      // Show Gigapub Ad
-      if (typeof showAd === 'function') {
-        showAd(); // Function from Gigapub script
+    function adReady() {
+      adLoaded = true;
+      console.log("✅ Gigapub Ad script loaded successfully!");
+    }
+
+    function adError() {
+      alert("❌ Ad script load failed! Please check your ID or network.");
+    }
+
+    document.getElementById('startButton').addEventListener('click', () => {
+      if (adLoaded && typeof showAd === 'function') {
+        showAd();
       } else {
-        alert("Ad script not loaded yet. Please try again.");
+        alert("⚠️ Ad not ready yet. Please wait a few seconds and try again.");
       }
     });
   </script>
