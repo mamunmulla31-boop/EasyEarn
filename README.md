@@ -1,5 +1,4 @@
-# EasyEarn
-“A Telegram Mini App to help users earn easily.”
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
