@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Telegram Mini App - Gigapub Ad</title>
+  <title>Gigapub Interstitial Ad</title>
 
   <!-- Gigapub Ad Script -->
-  <script src="https://ad.gigapub.tech/script?id=2128" async defer 
-          onload="adReady()" onerror="adError()"></script>
+  <script src="https://ad.gigapub.tech/script?id=2128" async defer></script>
 
   <style>
     body {
@@ -36,25 +35,21 @@
 </head>
 <body>
   <h1>Welcome to Mini App</h1>
-  <button id="startButton">Start</button>
+  <button id="showAdBtn">Show Ad</button>
 
   <script>
-    let adLoaded = false;
-
-    function adReady() {
-      adLoaded = true;
-      console.log("✅ Gigapub Ad script loaded successfully!");
-    }
-
-    function adError() {
-      alert("❌ Ad script load failed! Please check your ID or network.");
-    }
-
-    document.getElementById('startButton').addEventListener('click', () => {
-      if (adLoaded && typeof showAd === 'function') {
-        showAd();
+    document.getElementById("showAdBtn").addEventListener("click", () => {
+      if (typeof window.showGiga === "function") {
+        window.showGiga()
+          .then(() => {
+            console.log("✅ Ad closed successfully.");
+          })
+          .catch((err) => {
+            console.error("❌ Ad failed:", err);
+            alert("Ad failed or skipped. Try again.");
+          });
       } else {
-        alert("⚠️ Ad not ready yet. Please wait a few seconds and try again.");
+        alert("⚠️ Ad not ready yet. Please wait...");
       }
     });
   </script>
