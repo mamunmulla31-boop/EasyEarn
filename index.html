@@ -1,92 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gigapub Interstitial Ad</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Gigapub Ad Script -->
-  <script src="https://ad.gigapub.tech/script?id=2128" async defer></script>
+<meta name="monetag" content="9b9cec2d011bd90cbb52de372d595589">
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-      background-color: #f4f4f4;
-    }
-    h1 {
-      margin-bottom: 30px;
-    }
-    button {
-      padding: 15px 30px;
-      font-size: 18px;
-      cursor: pointer;
-      background-color: #0088cc;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      transition: 0.3s;
-    }
-    button:hover {
-      background-color: #005f99;
-    }
-    #taskCounter {
-      margin-top: 20px;
-      font-size: 20px;
-      color: #333;
-    }
-  </style>
+<title>Unlimited Earn - Official Download</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#f2f2f2;
+}
+.header{
+    background:#16a085;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+.container{
+    max-width:400px;
+    margin:30px auto;
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+.logo{
+    width:100px;
+    border-radius:20px;
+}
+h2{
+    margin:10px 0;
+}
+.rating{
+    color:#f39c12;
+    font-size:18px;
+}
+.btn{
+    display:block;
+    text-decoration:none;
+    background:#16a085;
+    color:white;
+    padding:15px;
+    margin-top:20px;
+    border-radius:10px;
+    font-size:18px;
+}
+.btn:hover{
+    background:#138d75;
+}
+.review{
+    background:#f9f9f9;
+    padding:10px;
+    margin-top:10px;
+    border-radius:8px;
+    font-size:14px;
+}
+.footer{
+    text-align:center;
+    margin-top:20px;
+    font-size:13px;
+    color:#777;
+}
+</style>
 </head>
+
 <body>
-  <h1>Welcome to Mini App</h1>
-  <button id="showAdBtn">Show Ad</button>
-  <p id="taskCounter">Tasks Completed: 0</p>
 
-  <script>
-    // Initialize storage
-    function resetTasks() {
-      localStorage.setItem("taskCount", "0");
-      localStorage.setItem("lastReset", Date.now().toString());
-      updateUI();
-    }
+<div class="header">
+    <h1>Unlimited Earn</h1>
+</div>
 
-    function checkReset() {
-      const lastReset = parseInt(localStorage.getItem("lastReset")) || 0;
-      const now = Date.now();
-      if (now - lastReset >= 24 * 60 * 60 * 1000) {
-        resetTasks();
-      }
-    }
+<div class="container" align="center">
+    <img src="https://i.postimg.cc/MGbqkgyY/IMG-20250828-152057-360.jpg" class="logo">
 
-    function updateUI() {
-      const taskCount = localStorage.getItem("taskCount") || "0";
-      document.getElementById("taskCounter").innerText =
-        "Tasks Completed: " + taskCount;
-    }
+    <h2>Unlimited Earn</h2>
+    <p>Start earning easily with our trusted earning app.</p>
 
-    // Run at start
-    checkReset();
-    updateUI();
+    <div class="rating">
+        ⭐⭐⭐⭐☆ 4.5 Rating
+    </div>
 
-    document.getElementById("showAdBtn").addEventListener("click", () => {
-      if (typeof window.showGiga === "function") {
-        window.showGiga()
-          .then(() => {
-            console.log("✅ Ad closed successfully.");
-            let taskCount = parseInt(localStorage.getItem("taskCount") || "0");
-            taskCount++;
-            localStorage.setItem("taskCount", taskCount.toString());
-            updateUI();
-          })
-          .catch((err) => {
-            console.error("❌ Ad failed:", err);
-            alert("Ad failed or skipped. Try again.");
-          });
-      } else {
-        alert("⚠️ Ad not ready yet. Please wait...");
-      }
-    });
-  </script>
+    <a href="https://www.mediafire.com/file/bhtbmnclmngbocp/unlimited+earn.apk/file" class="btn">
+        Download APK (6.7 MB)
+    </a>
+
+    <h3>User Reviews</h3>
+
+    <div class="review">
+        ⭐⭐⭐⭐⭐<br>
+        Very useful app. Easy to use and smooth performance.
+    </div>
+
+    <div class="review">
+        ⭐⭐⭐⭐☆<br>
+        Good earning experience. Fast withdrawal system.
+    </div>
+</div>
+
+<div class="footer">
+© 2026 Unlimited Earn. All Rights Reserved.
+</div>
+
 </body>
 </html>
